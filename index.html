@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Mayara Akemi | Harmonização Orofacial & Estética</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #5a141e;      /* vinho profundo */
+            --cor-secundaria: #c0a183;    /* bege dourado */
+            --cor-fundo: #fdf8f5;         /* fundo claro rosado */
+            --cor-texto: #2c1b18;         /* marrom escuro */
+            --cor-hover: #8b4f42;         /* vinho médio */
+            --sombra-suave: 0 5px 20px rgba(90, 20, 30, 0.08);
+            --borda-suave: 1px solid #e0cdc3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--cor-texto);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--sombra-suave);
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 15px rgba(90, 20, 30, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-primaria);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--cor-primaria);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--cor-primaria);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cor-primaria);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--cor-primaria);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(90, 20, 30, 0.3);
+        }
+
+        /* Seções */
+        .section {
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--cor-secundaria);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Sobre */
+        .sobre-texto {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: var(--sombra-suave);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: var(--borda-suave);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(90, 20, 30, 0.15);
+            border-color: var(--cor-secundaria);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            fill: var(--cor-primaria);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Modal Serviço */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 20, 30, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: scale(0.9);
+            transition: all 0.4s ease;
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--cor-primaria);
+        }
+
+        .modal h2 {
+            color: var(--cor-primaria);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .modal p {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Contato */
+        .contact-info {
+            max-width: 700px;
+            margin: 3rem auto;
+            text-align: left;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--sombra-suave);
+            border: var(--borda-suave);
+        }
+
+        .contact-info p {
+            margin: 1.2rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info svg {
+            margin-right: 1rem;
+            fill: var(--cor-primaria);
+            min-width: 24px;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--cor-primaria);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: var(--cor-hover);
+            box-shadow: 0 10px 20px rgba(90, 20, 30, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cor-texto);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Animações ao rolar */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.aparecer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp Floating Button & Modal */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--cor-primaria);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(90, 20, 30, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--cor-hover);
+        }
+
+        .whatsapp-btn svg {
+            width: 36px;
+            height: 36px;
+            fill: white;
+        }
+
+        .whatsapp-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 20, 30, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .whatsapp-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .whatsapp-modal {
+            width: 90%;
+            max-width: 400px;
+            background: var(--cor-fundo);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(90, 20, 30, 0.2);
+            transform: scale(0.9);
+            transition: all 0.4s ease;
+            border: 1px solid var(--cor-secundaria);
+        }
+
+        .whatsapp-modal-overlay.active .whatsapp-modal {
+            transform: scale(1);
+        }
+
+        .modal-header-whatsapp {
+            background: var(--cor-primaria);
+            color: white;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header-whatsapp h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .close-modal-whatsapp {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .close-modal-whatsapp:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body-whatsapp {
+            height: 300px;
+            padding: 16px;
+            background: #fdf0e9;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            gap: 12px;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .received {
+            background: white;
+            align-self: flex-start;
+            border: 1px solid var(--cor-secundaria);
+            color: var(--cor-texto);
+        }
+
+        .sent {
+            background: #f5e5da;
+            align-self: flex-end;
+            margin-left: auto;
+            border: 1px solid #e0cdc3;
+            color: var(--cor-texto);
+        }
+
+        .modal-footer-whatsapp {
+            padding: 16px;
+            background: white;
+            display: flex;
+            border-top: 1px solid #e0cdc3;
+        }
+
+        .modal-footer-whatsapp input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--cor-secundaria);
+            border-radius: 24px;
+            outline: none;
+            font-size: 1rem;
+            color: var(--cor-texto);
+            background: var(--cor-fundo);
+            transition: border-color 0.3s;
+        }
+
+        .modal-footer-whatsapp input:focus {
+            border-color: var(--cor-primaria);
+        }
+
+        .modal-footer-whatsapp button {
+            background: var(--cor-primaria);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            box-shadow: 0 2px 8px rgba(90, 20, 30, 0.2);
+        }
+
+        .modal-footer-whatsapp button:hover {
+            background: var(--cor-hover);
+            transform: translateY(-2px);
+        }
+
+        .modal-footer-whatsapp button svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .section {
+                padding: 5rem 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .modal, .whatsapp-modal {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Dra. Mayara Akemi</a>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Beleza com Essência e Elegância</h1>
+            <p>Harmonização orofacial e estética corporal com técnicas de precisão, segurança e resultados naturais que realçam sua singularidade.</p>
+            <a href="#contato" class="btn">Agende sua Consulta</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Sobre Mim</h2>
+            <div class="sobre-texto fade-in">
+                <p>Sou a Dra. Mayara Akemi, Cirurgiã Dentista especializada em Harmonização Orofacial. Meu trabalho é guiado pela filosofia de que a beleza verdadeira nasce da harmonia entre técnica, sensibilidade e respeito à individualidade de cada paciente.</p>
+                <p>Atuo com tecnologia de ponta, protocolos atualizados e um olhar humanizado, garantindo experiências acolhedoras e resultados que exaltam sua essência — nunca mascaram quem você é.</p>
+                <p>Investimento constante em formação e inovação para oferecer o que há de mais seguro e eficaz no universo da estética facial e corporal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="section" style="background-color: white;">
+        <div class="container">
+            <h2 class="section-title fade-in">Nossos Serviços</h2>
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card fade-in" data-modal="botox">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <h3>Toxina Botulínica</h3>
+                    <p>Suavize expressões e rejuvenesça seu olhar com naturalidade.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card fade-in" data-modal="preenchimento">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                    <h3>Preenchimento Facial</h3>
+                    <p>Restaure volumes, contornos e definição com ácido hialurônico premium.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card fade-in" data-modal="labial">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.5,15C8.14,15 5.5,12.36 5.5,9C5.5,7.93 5.79,6.92 6.31,6.06L7.73,7.47C7.4,8.23 7.2,9.08 7.2,10C7.2,12.21 8.99,14 11.2,14C12.08,14 12.93,13.8 13.69,13.47L15.1,14.88C14.24,15.4 13.23,15.69 12.16,15.69C11.93,15.69 11.7,15.67 11.5,15.64V15M11.5,3C7.1,3 3.5,6.6 3.5,11C3.5,15.4 7.1,19 11.5,19C15.9,19 19.5,15.4 19.5,11C19.5,6.6 15.9,3 11.5,3M11.5,17C7.91,17 5,14.09 5,10.5C5,6.91 7.91,4 11.5,4C15.09,4 18,6.91 18,10.5C18,14.09 15.09,17 11.5,17Z" /></svg>
+                    <h3>Harmonização Labial</h3>
+                    <p>Lábios simétricos, volumosos e naturais, desenhados para seu rosto.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card fade-in" data-modal="clareamento">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" /></svg>
+                    <h3>Clareamento Dental</h3>
+                    <p>Clareie seu sorriso com técnicas seguras e resultados duradouros.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card fade-in" data-modal="laser">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" /></svg>
+                    <h3>Depilação a Laser</h3>
+                    <p>Redução permanente de pelos com conforto e tecnologia de última geração.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card fade-in" data-modal="corporal">
+                    <svg class="service-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5,11.5C13.5,12.33 12.83,13 12,13C11.17,13 10.5,12.33 10.5,11.5C10.5,10.67 11.17,10 12,10C12.83,10 13.5,10.67 13.5,11.5M19.5,11.5C19.5,14.5 17,17 14,17H10C7,17 4.5,14.5 4.5,11.5C4.5,8.5 7,6 10,6H14C17,6 19.5,8.5 19.5,11.5M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2Z" /></svg>
+                    <h3>Protocolos Corporais</h3>
+                    <p>Modelagem, redução de medidas e combate à celulite com resultados visíveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section" style="background-color: var(--cor-fundo);">
+        <div class="container">
+            <h2 class="section-title fade-in">Entre em Contato</h2>
+            <div class="contact-info fade-in">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Rua José Paulino, 1350 — Centro — Sumaré/SP
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="https://wa.me/5519996655558" target="_blank" style="color: inherit; text-decoration: none;">(19) 99665-5558</a>
+                </p>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
+                    <a href="https://instagram.com/dramayaraakemi" target="_blank" style="color: inherit; text-decoration: none;">@dramayaraakemi</a>
+                </p>
+            </div>
+            <div class="social-links">
+                <a href="https://instagram.com/dramayaraakemi" target="_blank">📷</a>
+                <a href="https://wa.me/5519996655558" target="_blank">💬</a>
+            </div>
+        </div>
+    </section>
+
+<!-- ============= SEÇÃO DE MAPA ============= -->
+<section class="section" style="padding: 4rem 0; background-color: white;">
+    <div class="container">
+        <h2 class="section-title" style="margin-bottom: 2.5rem;">Nos Encontre</h2>
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--sombra-suave); border: var(--borda-suave);">
+            <!-- Google Maps Embed (sem API key - modo visual) -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.945382477358!2d-47.27549202480354!3d-22.81961343007379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b0f277664b8d%3A0x7c3e3e8c5d5f5f5f!2sR.%20Jos%C3%A9%20Paulino%2C%201350%20-%20Centro%2C%20Sumar%C3%A9%20-%20SP%2C%2013170-000!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="450"
+                style="border:0; border-radius: 16px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <div style="margin-top: 2rem; text-align: center; color: var(--cor-texto); font-size: 1.1rem;">
+            <p>📍 <strong>Rua José Paulino, 1350 — Centro — Sumaré/SP</strong></p>
+            <p>Estacionamento fácil e acesso por principais vias da cidade.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============= FOOTER PROFISSIONAL ============= -->
+<footer style="background: var(--cor-texto); color: white; padding: 4rem 0 2rem; font-family: 'Lato', sans-serif;">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            
+            <!-- Coluna 1: Sobre -->
+            <div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--cor-secundaria);">Dra. Mayara Akemi</h3>
+                <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Especialista em Harmonização Orofacial e Estética Corporal. Resultados naturais, ambiente acolhedor e tecnologia de ponta.
+                </p>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <a href="https://instagram.com/dramayaraakemi" target="_blank" style="color: white; font-size: 1.3rem;">📷</a>
+                    <a href="https://wa.me/5519996655558" target="_blank" style="color: white; font-size: 1.3rem;">💬</a>
+                </div>
+            </div>
+
+            <!-- Coluna 2: Contato -->
+            <div>
+                <h4 style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--cor-secundaria);">Contato</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.8;">
+                    <li style="display: flex; align-items: flex-start; margin-bottom: 0.8rem;">
+                        <svg width="18" height="18" fill="var(--cor-secundaria)" style="margin-right: 0.7rem; flex-shrink: 0;" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Rua José Paulino, 1350<br>Centro — Sumaré/SP
+                    </li>
+                    <li style="display: flex; align-items: flex-start; margin-bottom: 0.8rem;">
+                        <svg width="18" height="18" fill="var(--cor-secundaria)" style="margin-right: 0.7rem; flex-shrink: 0;" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        (19) 99665-5558
+                    </li>
+                    <li style="display: flex; align-items: flex-start;">
+                        <svg width="18" height="18" fill="var(--cor-secundaria)" style="margin-right: 0.7rem; flex-shrink: 0;" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        contato@dramayaraakemi.com.br
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Horários -->
+            <div>
+                <h4 style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--cor-secundaria);">Horários</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.95rem; line-height: 1.8;">
+                    <li>Segunda a Sexta: 9h às 19h</li>
+                    <li>Sábado: 9h às 14h</li>
+                    <li>Domingo: Fechado</li>
+                    <li style="margin-top: 1rem; font-style: italic; color: #ddd;">* Atendimento com hora marcada</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Linha divisória -->
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;"></div>
+
+        <!-- Direitos -->
+        <div style="text-align: center; font-size: 0.9rem; color: #aaa;">
+            <p>&copy; 2025 Dra. Mayara Akemi — Harmonização Orofacial & Estética. Todos os direitos reservados.</p>
+            <p>Desenvolvido com elegância para realçar sua beleza natural.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Modais de Serviço -->
+    <div class="modal-overlay" id="modal-botox">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Toxina Botulínica (Botox)</h2>
+            <p>A toxina botulínica é uma proteína purificada que, quando aplicada em pequenas doses em pontos estratégicos da face, promove o relaxamento muscular responsável pelas rugas dinâmicas — aquelas causadas pela expressão facial.</p>
+            <p>O procedimento é rápido, minimamente invasivo e com efeito natural. Ideal para suavizar linhas de expressão na testa, entre as sobrancelhas (glabela) e pés de galinha. Resultados visíveis em 3 a 7 dias, com duração média de 4 a 6 meses.</p>
+            <p><strong>Duração:</strong> 15 minutos | <strong>Anestesia:</strong> Tópica ou gelo | <strong>Recuperação:</strong> Imediata</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-preenchimento">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Preenchimento Facial com Ácido Hialurônico</h2>
+            <p>O preenchimento facial utiliza ácido hialurônico — substância natural do corpo — para restaurar volumes perdidos, definir contornos e suavizar sulcos. Indicado para sulcos nasogenianos, lábios, maçãs do rosto, queixo e mandíbula.</p>
+            <p>Resultados imediatos, com aspecto natural e segurança comprovada. O ácido é reabsorvido pelo organismo em 12 a 18 meses, dependendo da região e do produto utilizado.</p>
+            <p><strong>Duração:</strong> 30 minutos | <strong>Anestesia:</strong> Tópica ou local | <strong>Recuperação:</strong> Leve inchaço por 24-48h</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-labial">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Harmonização Labial</h2>
+            <p>A harmonização labial vai além do simples aumento de volume. Trata-se de um procedimento personalizado que busca equilibrar proporções, corrigir assimetrias, definir o bico de cupido e projetar os lábios de forma natural, respeitando a anatomia e o biotipo de cada paciente.</p>
+            <p>Utilizamos ácido hialurônico de alta qualidade, com técnicas de aplicação que garantem conforto e segurança. Resultado imediato, com ajustes finos após 15 dias.</p>
+            <p><strong>Duração:</strong> 30 minutos | <strong>Anestesia:</strong> Em creme ou bloqueio | <strong>Recuperação:</strong> Inchaço leve por 2-3 dias</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-clareamento">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Clareamento Dental</h2>
+            <p>Clareamento dental é um procedimento estético que remove manchas e pigmentações dos dentes, devolvendo o brilho e a cor natural — ou até mais clara — do seu sorriso.</p>
+            <p>Oferecemos protocolos personalizados, com produtos de alta concentração e tecnologia LED para acelerar os resultados. Seguro, indolor e eficaz, com manutenção simples.</p>
+            <p><strong>Duração:</strong> 1h (sessão clínica) | <strong>Sensibilidade:</strong> Leve e passageira | <strong>Duração dos resultados:</strong> Até 2 anos com manutenção</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-laser">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Depilação a Laser</h2>
+            <p>A depilação a laser é o método mais eficaz para redução permanente dos pelos indesejados. Utilizamos equipamentos de última geração, com tecnologia de resfriamento para maior conforto e segurança em todos os fototipos de pele.</p>
+            <p>Indicado para axilas, virilha, pernas, braços, costas e buço. Necessita de múltiplas sessões (geralmente 6 a 8), com intervalos de 30 a 45 dias.</p>
+            <p><strong>Duração:</strong> Variável por região | <strong>Contraindicações:</strong> Gravidez, bronzeamento recente | <strong>Recuperação:</strong> Nenhuma</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-corporal">
+        <div class="modal">
+            <span class="close-modal">&times;</span>
+            <h2>Protocolos Corporais</h2>
+            <p>Desenvolvemos protocolos personalizados para modelagem corporal, redução de medidas, combate à celulite e flacidez. Combinamos tecnologias como radiofrequência, ultrassom, drenagem linfática e eletroestimulação, sempre com avaliação individualizada.</p>
+            <p>Indicado para quem busca resultados estéticos sem cirurgia. Recomenda-se pacotes de 8 a 12 sessões, 2x por semana, com manutenção mensal.</p>
+            <p><strong>Duração:</strong> 50 minutos por sessão | <strong>Resultados:</strong> Visíveis a partir da 4ª sessão | <strong>Manutenção:</strong> Mensal</p>
+        </div>
+    </div>
+
+    <!-- Modal WhatsApp -->
+    <div class="whatsapp-modal-overlay" id="whatsappModal">
+        <div class="whatsapp-modal">
+            <div class="modal-header-whatsapp">
+                <h3>Converse conosco</h3>
+                <button class="close-modal-whatsapp" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body-whatsapp" id="messageContainer">
+                <div class="message-bubble received">
+                    Olá! Como podemos te ajudar? 😊
+                </div>
+            </div>
+            <div class="modal-footer-whatsapp">
+                <input type="text" id="userMessage" placeholder="Digite sua mensagem..." maxlength="200">
+                <button id="sendMessage">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="white" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <div class="whatsapp-btn" id="whatsappBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36">
+            <path fill="white" d="M17.7,14.1c-0.2-0.1-1.2-0.6-1.4-0.7c-0.2-0.1-0.4-0.1-0.6,0.1c-0.2,0.1-0.5,0.7-0.6,0.8c-0.1,0.2-0.3,0.2-0.5,0.1 c-3.3-1.3-5.7-4.6-6.2-8.4c-0.1-0.2,0-0.4,0.1-0.5c0.7-0.9,1.5-1.7,2.4-2.3c0.1-0.1,0.1-0.2,0-0.3L10,1.5c-0.1-0.1-0.3-0.1-0.4,0 C7.4,3,6,5.8,6,9c0,4.4,3.6,8,8,8c2.4,0,4.6-1,6.2-2.8c0.1-0.1,0.1-0.3,0-0.4l-1.3-1.2C18.7,12.5,18,12.3,17.7,14.1z M12,22c-1.1,0-2.2-0.1-3.2-0.4 c-1.8-0.5-3.4-1.6-4.5-3.1C2.5,16.6,1.4,14.7,1,12.7C0.3,10.6,0,8.4,0,6.2c0-1.1,0.1-2.2,0.4-3.2c0.5-1.8,1.6-3.4,3.1-4.5C5.4,0.7,7.3,0,9.3,0 c1.1,0,2.2,0.1,3.2,0.4c1.8,0.5,3.4,1.6,4.5,3.1c1.7,1.8,2.8,4,3.1,6.4c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3 c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0,0.3c0,0.1,0,0.2,0,0.3l0......"/>
+        </svg>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // ========== MODAIS DE SERVIÇO ==========
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal');
+                document.getElementById(`modal-${modalId}`).classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.querySelectorAll('.close-modal').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // ========== MODAL WHATSAPP ==========
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const whatsappModal = document.getElementById('whatsappModal');
+        const closeModal = document.getElementById('closeModal');
+        const userMessageInput = document.getElementById('userMessage');
+        const sendMessageBtn = document.getElementById('sendMessage');
+        const messageContainer = document.getElementById('messageContainer');
+
+        whatsappBtn.addEventListener('click', () => {
+            whatsappModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            userMessageInput.focus();
+        });
+
+        closeModal.addEventListener('click', () => {
+            whatsappModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        whatsappModal.addEventListener('click', (e) => {
+            if (e.target === whatsappModal) {
+                whatsappModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        function enviarMensagem() {
+            const mensagem = userMessageInput.value.trim();
+            if (!mensagem) return;
+
+            const bubble = document.createElement('div');
+            bubble.classList.add('message-bubble', 'sent');
+            bubble.textContent = mensagem;
+            messageContainer.appendChild(bubble);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+
+            userMessageInput.value = '';
+
+            const numero = ' 5511970753485';
+            const texto = encodeURIComponent(`Olá, Dra. Mayara! ${mensagem}`);
+            window.open(`https://wa.me/${numero}?text=${texto}`, '_blank');
+
+            setTimeout(() => {
+                whatsappModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }, 1000);
+        }
+
+        sendMessageBtn.addEventListener('click', enviarMensagem);
+        userMessageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') enviarMensagem();
+        });
+
+        // ========== HEADER SCROLL ==========
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ========== ANIMAÇÃO AO ROLAR ==========
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aparecer');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
