@@ -65,6 +65,10 @@ nav {
   align-items: center;
   
 }
+div a img{
+  height: 20px;
+  width: auto;
+}
 
 .logo {
   display: block;
@@ -414,10 +418,6 @@ ease;
   transition: all 0.3s;
 }
 
-.social-img {
-  width: 24px;
-  height: 24px;
-}
 .social-links a:hover {
   transform: translateY(-5px);
   background: var(--cor-hover);
