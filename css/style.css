@@ -33,7 +33,7 @@ h3,
 h4 {
   font-family: "Playfair Display", serif;
   font-weight: 600;
-  color: var(--cor-secundaria);
+  color: var(--cor-primaria);
 }
 
 .container {
@@ -125,7 +125,7 @@ nav {
 .hero {
 height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
-     url(/img/img_hero_Dra_MayaraAkemi.png) no-repeat center center / cover;
+     url("../img/img_hero_Dra_MayaraAkemi.png") no-repeat center center / cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,6 +139,7 @@ height: 100vh;
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  color: var(--cor-secundaria);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
 }
@@ -413,6 +414,10 @@ ease;
   transition: all 0.3s;
 }
 
+.social-img {
+  width: 24px;
+  height: 24px;
+}
 .social-links a:hover {
   transform: translateY(-5px);
   background: var(--cor-hover);
@@ -631,12 +636,12 @@ footer p {
     cursor: pointer;
     width: 35px;
     height: 35px;
-    background: url("/img/icon_menu_hamburguer.svg") center center no-repeat;
+    background: url("../img/icon_menu_hamburguer.svg") center center no-repeat;
     background-size: cover;
      transition: all 1s;
   }
 .menu-icon.open{
-  background-image: url("/img/icon_menu_hamburguer_active.svg");
+  background-image: url("../img/icon_menu_hamburguer_active.svg");
   transition: all 1s;
 }
   .nav-links {
