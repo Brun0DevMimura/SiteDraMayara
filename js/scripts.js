@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector(".menu-icon");
     const mobileMenu = document.querySelector(".content-nav");
+    const fadeElements = document.querySelectorAll(".fade-in");
     console.log(hamburger);
     console.log(mobileMenu);
 //Abrir menu mobile
@@ -25,6 +26,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  fadeElements.forEach(el => observer.observe(el));
 });
 
 
@@ -151,3 +162,29 @@ document.querySelectorAll('.fade-in').forEach(el => {
       iconSkipForward.addEventListener('click', function() {
       animationSkipForward.playSegments([0,60], true);
     });
+
+    document.querySelectorAll('.testimonial-screenshot').forEach(img => {
+  img.addEventListener('click', function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = this.src;
+    lightboxImg.alt = this.alt;
+    lightbox.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // trava scroll
+  });
+});
+
+document.getElementById('lightbox').addEventListener('click', function (e) {
+  if (e.target === this || e.target.classList.contains('close-lightbox')) {
+    this.style.display = 'none';
+    document.body.style.overflow = ''; // libera scroll
+  }
+});
+
+// Fechar com tecla ESC
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && document.getElementById('lightbox').style.display === 'flex') {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
