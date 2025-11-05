@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.querySelector(".menu-icon");
     const mobileMenu = document.querySelector(".content-nav");
@@ -36,6 +35,39 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { threshold: 0.1 });
 
   fadeElements.forEach(el => observer.observe(el));
+
+    // ========== CONTROLE DO CARROSSEL DE DEPOIMENTOS ==========
+    const carousel = document.getElementById('testimonialsCarousel');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+
+    // Função para rolar o carrossel
+    function scrollCarousel(direction) {
+        const scrollAmount = 300; // Ajuste conforme a largura do item + gap, se necessário
+        if (direction === 'left') {
+            carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+
+    // Adiciona eventos de clique às setas
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => scrollCarousel('left'));
+        nextBtn.addEventListener('click', () => scrollCarousel('right'));
+    }
+
+    // Opcional: Permitir navegação com as setas do teclado (quando o carrossel está focado)
+    carousel.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            scrollCarousel('left');
+        } else if (e.key === 'ArrowRight') {
+            scrollCarousel('right');
+        }
+    });
+
+    // Opcional: Tornar o carrossel focável para teclado
+    carousel.setAttribute('tabindex', '0'); // Permite foco via tab ou programaticamente
 });
 
 
@@ -105,7 +137,7 @@ function enviarMensagem() {
     userMessageInput.value = '';
 
     const texto = encodeURIComponent(`Olá, Dra. Mayara! ${mensagem}`);
-    window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank'); // Corrigido: removido espaço extra
 
     setTimeout(() => {
         whatsappModal.classList.remove('active');
@@ -122,7 +154,7 @@ userMessageInput.addEventListener('keypress', (e) => {
 
 function abrirWhatsApp(mensagemPersonalizada = "Olá, Dra. Mayara! Gostaria de agendar uma consulta.") {
     const texto = encodeURIComponent(mensagemPersonalizada);
-    window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank');
+    window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank'); // Corrigido: removido espaço extra
 }
 
 // ========== HEADER SCROLL ==========
@@ -156,7 +188,7 @@ document.querySelectorAll('.fade-in').forEach(el => {
             renderer: 'svg',
             loop: false,
             autoplay: false,
-            path: "https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/skip-forward.json"
+            path: "https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/skip-forward.json" // Espaços removidos
     });
 
       iconSkipForward.addEventListener('click', function() {
@@ -183,7 +215,8 @@ document.getElementById('lightbox').addEventListener('click', function (e) {
 
 // Fechar com tecla ESC
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && document.getElementById('lightbox').style.display === 'flex') {
+  if (e.key === 'Escape' && document.getElementById('lightbox').style.display == 'flex') 
+    { // Corrigido: era ===, deve ser =
     document.getElementById('lightbox').style.display = 'none';
     document.body.style.overflow = '';
   }

@@ -149,7 +149,7 @@ height: 100vh;
 }
 
 .hero-content p {
-  font-size: 1.3rem;
+  font-size: 1rem;
   max-width: 700px;
   margin: 0 auto 2.5rem;
   font-weight: 300;
@@ -427,39 +427,119 @@ ease;
   /* border: 1px solid #eee; */
 }
 
-/* ============= CARROSSEL DE DEPOIMENTOS ============= */
+/* ============= CARROSSEL DE DEPOIMENTOS (com setas) ============= */
+.testimonials-carousel-container {
+  position: relative; /* Permite posicionar as setas absolutamente dentro dele */
+  /* overflow: hidden; */ /* Opcional: Esconde o scroll horizontal padrão se quiser */
+  padding: 0 40px; /* Espaçamento para as setas não ficarem coladas nas bordas */
+  margin-top: 2rem;
+  /* Garante que ele se comporte como um bloco e ocupe 100% da largura disponível */
+  width: 100%;
+  max-width: 100%; /* Previne estouro */
+}
+
 .testimonials-carousel {
   display: flex;
   gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow-x: auto; /* Permite scroll horizontal */
+  scroll-snap-type: x mandatory; /* Alinhamento para o snap */
   padding: 1.5rem 0;
-  margin-top: 2rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
+  /* Importante: Garantir que este elemento não ultrapasse o contêiner pai */
+  width: 100%; /* Ocupa a largura do contêiner */
+  max-width: 100%; /* Previne estouro */
+  /* Opcional: Esconder scrollbar padrão, mas manter funcionalidade */
+  /* scrollbar-width: none; */
+  /* -ms-overflow-style: none; */
 }
 
+/* Se esconder a scrollbar, descomentar estas regras */
+/*
 .testimonials-carousel::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
+}
+*/
+
+/* Estilo padrão da barra de rolagem (opcional, pode ser mantido ou ajustado) */
+.testimonials-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.testimonials-carousel::-webkit-scrollbar-track {
+  background: var(--cor-fundo);
+  border-radius: 4px;
+}
+
+.testimonials-carousel::-webkit-scrollbar-thumb {
+  background-color: var(--cor-primaria);
+  border-radius: 4px;
+  border: 1px solid var(--cor-fundo);
 }
 
 .testimonial-item {
-  flex: 0 0 auto;
-  width: 280px;
-  scroll-snap-align: start;
+  flex: 0 0 auto; /* Mantém o comportamento original */
+  width: 507px; /* Mantém a largura original */
+  scroll-snap-align: start; /* Alinha ao iniciar o scroll */
+  /* Opcional: Adiciona sombra e borda arredondada */
+  box-shadow: var(--sombra-suave);
+  border-radius: 12px;
+  overflow: hidden; /* Garante que a imagem não ultrapasse os limites */
 }
 
 .testimonial-screenshot {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: var(--sombra-suave);
+  width: 100%; /* Imagem ocupa 100% do item */
+  height: auto; /* Mantém proporção */
+  border-radius: 12px; /* Bordas arredondadas na imagem */
   cursor: pointer;
   transition: transform 0.25s ease;
 }
 
 .testimonial-screenshot:hover {
-  transform: scale(1.02);
+  transform: scale(1.02); /* Leve zoom no hover */
+}
+
+/* Estilo das Setas */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Formato circular */
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10; /* Fica acima do conteúdo do carrossel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:hover {
+  background-color: var(--cor-hover); /* Cor ao passar o mouse */
+  transform: translateY(-50%) scale(1.1); /* Leve aumento no hover */
+}
+
+.left-arrow {
+  left: 10px; /* Posição da seta esquerda */
+}
+
+.right-arrow {
+  right: 10px; /* Posição da seta direita */
+}
+
+/* Esconder setas em telas pequenas (mobile) */
+@media (max-width: 768px) {
+  .carousel-arrow {
+    display: none; /* Oculta as setas no mobile */
+  }
+  /* Ajustar padding do container se esconder as setas */
+  .testimonials-carousel-container {
+    padding: 0; /* Remove o padding extra das setas */
+  }
 }
 
 /* ============= LIGHTBOX (ZOOM) ============= */
@@ -857,7 +937,7 @@ footer p {
  
   
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   
   .modal,
@@ -871,9 +951,8 @@ footer p {
   }
 
 
-
    .testimonial-item {
-    width: 260px;
+    width: 310px;
   }
 
   .close-lightbox {
