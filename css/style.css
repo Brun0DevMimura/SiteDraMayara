@@ -140,7 +140,7 @@ height: 100vh;
 }
 
 .hero-content h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: var(--cor-secundaria);
@@ -149,7 +149,7 @@ height: 100vh;
 }
 
 .hero-content p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   max-width: 700px;
   margin: 0 auto 2.5rem;
   font-weight: 300;
@@ -179,7 +179,7 @@ height: 100vh;
 .section {
 padding: 7rem 0;
     text-align: center;
-    margin-top: 10%;
+    margin-top: 1%;
 }
 
 .section-title {
@@ -669,6 +669,9 @@ footer p {
 }
 
 /* WhatsApp Floating Button & Modal */
+/* ... (mantenha todo o CSS existente) ... */
+
+/* WhatsApp Floating Button & Modal */
 .whatsapp-btn {
   position: fixed;
   bottom: 30px;
@@ -728,25 +731,53 @@ footer p {
   transform: scale(0.9);
   transition: all 0.4s ease;
   border: 1px solid var(--cor-secundaria);
+  display: flex;
+  flex-direction: column; /* Organiza o conteúdo em coluna */
+  max-height: 80vh; /* Limita a altura máxima */
 }
 
 .whatsapp-modal-overlay.active .whatsapp-modal {
   transform: scale(1);
 }
 
+/* Novo: Estilo para o cabeçalho com foto e info */
 .modal-header-whatsapp {
   background: var(--cor-primaria);
   color: white;
   padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; /* Usa flex para alinhar foto e info */
+  align-items: center; /* Alinha verticalmente ao centro */
+  justify-content: space-between; /* Espaça a info e o botão de fechar */
+  border-bottom: 1px solid var(--cor-secundaria);
 }
 
-.modal-header-whatsapp h3 {
+.contact-header {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espaçamento entre foto e texto */
+  flex: 1; /* Ocupa o espaço disponível, menos o botão de fechar */
+}
+
+.contact-photo {
+  width: 40px; /* Tamanho da miniatura da foto */
+  height: 40px;
+  border-radius: 50%; /* Formato circular */
+  object-fit: cover; /* Cobre o espaço mantendo a proporção */
+  border: 2px solid var(--cor-secundaria); /* Borda opcional */
+}
+
+.contact-info-modal-whatsapp h4 {
+  margin: 0;
   font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  color: white;
+}
+
+.contact-info-modal-whatsapp p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cor-texto);
+  line-height: 1.2;
 }
 
 .close-modal-whatsapp {
@@ -756,6 +787,9 @@ footer p {
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.2s;
+  margin-left: auto; /* Empurra o botão para a direita */
+  padding: 0; /* Remove padding padrão */
+  width: auto; /* Permite que o botão tenha apenas o tamanho do conteúdo */
 }
 
 .close-modal-whatsapp:hover {
@@ -763,9 +797,9 @@ footer p {
 }
 
 .modal-body-whatsapp {
-  height: 300px;
+  flex: 1; /* Ocupa o espaço restante */
   padding: 16px;
-  background: #fdf0e9;
+  background: #e5ddd5; /* Cor de fundo semelhante ao WhatsApp */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -784,35 +818,35 @@ footer p {
 
 .received {
   background: white;
-  align-self: flex-start;
-  border: 1px solid var(--cor-secundaria);
+  align-self: flex-start; /* Alinha à esquerda */
+  border-top-left-radius: 4px; /* Cantos arredondados característicos */
   color: var(--cor-texto);
 }
 
 .sent {
-  background: #f5e5da;
-  align-self: flex-end;
+  background: #d9fdd3; /* Cor de mensagem enviada do WhatsApp */
+  align-self: flex-end; /* Alinha à direita */
   margin-left: auto;
-  border: 1px solid #e0cdc3;
+  border-top-right-radius: 4px; /* Cantos arredondados característicos */
   color: var(--cor-texto);
 }
 
 .modal-footer-whatsapp {
   padding: 16px;
-  background: white;
+  background: #f0f2f5; /* Cor de fundo do rodapé do WhatsApp */
   display: flex;
-  border-top: 1px solid #e0cdc3;
+  border-top: 1px solid #e0e0e0; /* Linha divisória */
 }
 
 .modal-footer-whatsapp input {
   flex: 1;
   padding: 12px 16px;
-  border: 1px solid var(--cor-secundaria);
+  border: 1px solid #e0e0e0; /* Borda mais clara */
   border-radius: 24px;
   outline: none;
   font-size: 1rem;
   color: var(--cor-texto);
-  background: var(--cor-fundo);
+  background: white; /* Fundo branco para o input */
   transition: border-color 0.3s;
 }
 
@@ -846,6 +880,8 @@ footer p {
   height: 26px;
   fill: white;
 }
+
+/* ... (mantenha o restante do CSS existente) ... */
 
 .fade-in {
   opacity: 0;
@@ -942,8 +978,8 @@ footer p {
   
   .modal,
   .whatsapp-modal {
-    padding: 2rem;
-    margin: 1rem;
+    padding: 0;
+    margin: 0.5rem;
   }
 
     .testimonial-card {
